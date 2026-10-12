@@ -1051,7 +1051,7 @@
 .toolMark { display:grid; place-items:center; width:34px; height:34px; color:#ff947a; background:#ff441c16; border-radius:9px; }
 .toolsNote { font-size:12px; color:#bfc0bf; margin-top:16px; }
 @keyframes toolsRun { to { transform:translateX(-50%); } }
-.toolsWindow:hover .toolsTrack, [data-paused="true"] *, [data-paused="true"] article { animation-play-state:paused; }
+.toolsWindow:hover .toolsTrack, .toolsWindow[data-paused="true"] *, .problemGrid[data-paused="true"] * { animation-play-state:paused; }
 .studioCopy .studioHeading { text-align:left; max-width:none; margin:0 0 26px; }
 .studioCopy .studioHeading .eyebrow { justify-content:flex-start; }
 .studioCopy .studioHeading h2 { font-size:clamp(40px,4.5vw,66px); margin:0 0 18px; line-height:1.08; }
@@ -1059,3 +1059,4 @@
 .problemGrid p, .faq details p { font-size:16px; line-height:1.75; }
 @media(max-width:700px) { .toolsSection { padding:0 24px 55px; } .toolsHeading { align-items:flex-start; flex-direction:column; } .toolsGroup > span { font-size:15px; padding:14px 18px; } }
 @media(prefers-reduced-motion:reduce) { .toolsWindow { overflow:auto; mask-image:none; } .toolsGroup[aria-hidden="true"] { display:none; } }
+
