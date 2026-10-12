@@ -173,6 +173,7 @@ export function Company({ studioUrl }: { studioUrl: string }) {
                 <i key={index} style={{ height: `${height}%`, animationDelay: `${index * -0.13}s` }} />
               ))}
             </div>
+            <span className={styles.speakCaption} aria-hidden="true">Just speak.</span>
           </div>
         </section>
         <div className={styles.signalStrip}>
