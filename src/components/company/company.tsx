@@ -397,7 +397,7 @@ export function Company({ studioUrl }: { studioUrl: string }) {
         <section className={styles.faq}>
           <div>
             <p className={styles.eyebrow}>A LITTLE CLARITY</p>
-            <h2>Good questions.</h2>
+            <h2>FAQs</h2>
           </div>
           <div>
             {[
