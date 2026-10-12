@@ -14,6 +14,7 @@ import styles from "./company.module.css";
 type FormKind = "studio" | "service" | "contact";
 export function Company({ studioUrl }: { studioUrl: string }) {
   const [mapLoaded,setMapLoaded]=useState(false);
+  const [motionPaused, setMotionPaused] = useState(false);
   const [form, setForm] = useState<FormKind | null>(null),
     [menu, setMenu] = useState(false),
     [busy, setBusy] = useState(false),
@@ -187,32 +188,29 @@ export function Company({ studioUrl }: { studioUrl: string }) {
           <div className={styles.sectionHeading}>
             <p className={styles.eyebrow}>01 / THE WORLD OF REV3</p>
             <h2>
-              More ways to connect.
-              <br />
-              More ways to get things done.
+              Make room for voice.
             </h2>
             <p>
-              We see voice as a more natural way to use technology. Our work brings
-              together products, tailored services and a co-creation programme
-              that helps us discover what people need next.
+              A simpler way to ask, connect and get things done. We’re building it with the people who’ll use it.
             </p>
           </div>
-          <div className={styles.problemGrid}>
+          <div className={styles.problemGrid} data-paused={motionPaused}>
+            <div className={styles.connectingSignal} aria-hidden="true"><span /></div>
             {[
               {
                 n: "01",
-                title: "Voice agent services",
-                text: "One part of Rev3. We build agents that handle business calls, answer questions and move agreed tasks forward.",
+                title: "Voice agents",
+                text: "Voice that gets work done. AI agents that understand speech, connect your tools and turn conversations into action.",
               },
               {
                 n: "02",
                 title: "Rev3 Studio",
-                text: "Our co-creation space. Explore voice technology with us, test an experience and help shape the products we build.",
+                text: "Our co-creation programme. Try voice technology and help shape what we build.",
               },
               {
                 n: "03",
-                title: "What comes next",
-                text: "New voice products and services are part of our direction. We start with real problems, test ideas and build what proves useful.",
+                title: "Beyond calls",
+                text: "We’re developing new voice products and services that go beyond the phone.",
               },
             ].map((p) => (
               <article key={p.n}>
@@ -222,6 +220,20 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               </article>
             ))}
           </div>
+        </section>
+        <section className={styles.toolsSection} aria-label="Connected tools">
+          <div className={styles.toolsHeading}>
+            <div><h2>Works with the tools you use.</h2><p>Calendars, booking systems and CRM. Connections scoped for your service.</p></div>
+            <button className={styles.outline} onClick={() => setMotionPaused(!motionPaused)} aria-pressed={motionPaused}>{motionPaused ? "Play animation" : "Pause animation"}</button>
+          </div>
+          <div className={styles.toolsWindow} data-paused={motionPaused}>
+            <div className={styles.toolsTrack}>
+              {[0, 1].map(copy => <div className={styles.toolsGroup} key={copy} aria-hidden={copy === 1 ? true : undefined}>
+                {["Google Calendar", "HubSpot", "Calendly", "Salesforce", "Microsoft Bookings", "Pipedrive"].map(tool => <span key={tool}><span className={styles.toolMark} aria-hidden="true">{tool.slice(0, 1)}</span>{tool}</span>)}
+              </div>)}
+            </div>
+          </div>
+          <p className={styles.toolsNote}>Examples of tools we can assess for your setup. Availability depends on the tool’s API and your plan.</p>
         </section>
         <section className={styles.callSection}>
           <div>
@@ -287,12 +299,12 @@ export function Company({ studioUrl }: { studioUrl: string }) {
           <div>
             <p className={styles.eyebrow}>THE VOICE AGENT SERVICE</p>
             <h2>
-              You bring the business.
+              You speak.
               <br />
-              We build the agent.
+              Your agent gets to work.
             </h2>
             <p>
-              Missed calls, repetitive questions and follow-up admin take time from your team. Our voice agent service is built to help. We design the conversation, connect agreed tools and test it with you before launch.
+              Answer customer calls, book appointments, update your CRM, send confirmations and follow up, using your connected tools and business rules.
             </p>
           </div>
           <div>
@@ -307,16 +319,6 @@ export function Company({ studioUrl }: { studioUrl: string }) {
           </div>
         </section>
         <section className={styles.studioSection} id="studio">
-          <div className={styles.studioHeading}>
-            <p className={styles.eyebrow}>02 / BUILT WITH YOU</p>
-            <h2>
-              Meet Rev3 <em>Studio.</em>
-            </h2>
-            <p>
-              Our co-creation programme. Your experience helps shape the voice
-              technology we build next.
-            </p>
-          </div>
           <div className={styles.studioGrid}>
             <div className={styles.miloStage}>
               <div className={styles.milo}>
@@ -331,6 +333,17 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               <span>REV3 CO-CREATION PROGRAMME</span>
             </div>
             <div className={styles.studioCopy}>
+          <div className={styles.studioHeading}>
+            <p className={styles.eyebrow}>02 / BUILT WITH YOU</p>
+            <h2>
+              Meet Rev3 <em>Studio.</em>
+            </h2>
+            <p>
+              Our co-creation programme. Your experience helps shape the voice
+              technology we build next.
+            </p>
+          </div>
+
               <h3>
                 Built for you.
                 <br />
@@ -384,17 +397,6 @@ export function Company({ studioUrl }: { studioUrl: string }) {
             </div>
           </div>
         </section>
-        <section className={styles.future}>
-          <p className={styles.eyebrow}>MORE THAN ONE PRODUCT</p>
-          <h2>
-            Help shape what
-            <br />
-            <em>voice becomes.</em>
-          </h2>
-          <p>
-            We’re exploring new ways to interact with tools, turn speech into useful information and make everyday tasks feel more natural. Studio helps us test which ideas matter before we build them.
-          </p>
-        </section>
         <section className={styles.faq}>
           <div>
             <p className={styles.eyebrow}>A LITTLE CLARITY</p>
@@ -441,15 +443,14 @@ export function Company({ studioUrl }: { studioUrl: string }) {
           <div>
             <p className={styles.eyebrow}>LET’S TALK</p>
             <h2>
-              What could voice
+              Let’s build your
               <br />
-              do for you?
+              voice agent.
             </h2>
             <p>
-              Tell us what you’re working on. Meet online or arrange a visit to
-              our London office.
+              Tell us about your business. We’ll help you put voice to work.
             </p>
-            <button className={styles.primary} onClick={() => open("contact")}>
+            <button className={styles.primary} onClick={() => open("service")}>
               Get in touch <ArrowUpRight size={18} />
             </button>
             <address>

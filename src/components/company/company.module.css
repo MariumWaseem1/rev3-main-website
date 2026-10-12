@@ -1030,3 +1030,32 @@
 @keyframes speechArrives { 0%,30% { opacity:0; transform:translateY(15px) scale(.92); } 75%,100% { opacity:1; transform:translateY(0) scale(1); } }
 @keyframes speaking { from { transform:scaleY(.45); } to { transform:scaleY(1); } }
 @media (prefers-reduced-motion:reduce) { .screenFrame { display:none; } }
+/* Connected portfolio and tools */
+.problemGrid { position:relative; isolation:isolate; }
+.problemGrid article { animation:cardSignal 9s ease-in-out infinite; }
+.problemGrid article:nth-of-type(2) { animation-delay:3s; }
+.problemGrid article:nth-of-type(3) { animation-delay:6s; }
+.connectingSignal { position:absolute; left:5%; right:5%; top:-18px; height:2px; background:#ff441c20; overflow:hidden; }
+.connectingSignal span { display:block; width:20%; height:2px; background:linear-gradient(90deg,transparent,#ff795a,transparent); box-shadow:0 0 15px #ff441c; animation:signalFlow 9s linear infinite; }
+@keyframes signalFlow { from { transform:translateX(-100%); } to { transform:translateX(600%); } }
+@keyframes cardSignal { 0%,32%,100% { border-color:#ff8a6635; } 10%,22% { border-color:#ff795a; box-shadow:0 0 32px #ff441c12; } }
+.toolsSection { max-width:1500px; margin:auto; padding:0 6vw 85px; }
+.toolsHeading { display:flex; justify-content:space-between; align-items:center; gap:24px; margin-bottom:25px; }
+.toolsHeading h2 { font-size:clamp(26px,3vw,40px); margin:0 0 12px; }
+.toolsHeading p { color:#d2d4d2; font-size:16px; }
+.toolsHeading button { flex-shrink:0; font-size:11px; }
+.toolsWindow { overflow:hidden; mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent); }
+.toolsTrack { display:flex; width:max-content; animation:toolsRun 32s linear infinite; }
+.toolsGroup { display:flex; gap:16px; padding-right:16px; }
+.toolsGroup > span { display:flex; align-items:center; gap:12px; padding:18px 24px; border:1px solid #ffffff25; background:#ffffff06; border-radius:14px; font-size:17px; font-weight:650; white-space:nowrap; }
+.toolMark { display:grid; place-items:center; width:34px; height:34px; color:#ff947a; background:#ff441c16; border-radius:9px; }
+.toolsNote { font-size:12px; color:#bfc0bf; margin-top:16px; }
+@keyframes toolsRun { to { transform:translateX(-50%); } }
+.toolsWindow:hover .toolsTrack, [data-paused="true"] *, [data-paused="true"] article { animation-play-state:paused; }
+.studioCopy .studioHeading { text-align:left; max-width:none; margin:0 0 26px; }
+.studioCopy .studioHeading .eyebrow { justify-content:flex-start; }
+.studioCopy .studioHeading h2 { font-size:clamp(40px,4.5vw,66px); margin:0 0 18px; line-height:1.08; }
+.studioCopy .studioHeading > p:last-child { font-size:18px; color:#d2d4d2; }
+.problemGrid p, .faq details p { font-size:16px; line-height:1.75; }
+@media(max-width:700px) { .toolsSection { padding:0 24px 55px; } .toolsHeading { align-items:flex-start; flex-direction:column; } .toolsGroup > span { font-size:15px; padding:14px 18px; } }
+@media(prefers-reduced-motion:reduce) { .toolsWindow { overflow:auto; mask-image:none; } .toolsGroup[aria-hidden="true"] { display:none; } }
