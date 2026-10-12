@@ -1064,3 +1064,63 @@
 @media(max-width:700px) { .toolsSection { padding:0 24px 55px; } .toolsHeading { align-items:flex-start; flex-direction:column; } .toolsGroup > span { font-size:15px; padding:14px 18px; } }
 @media(prefers-reduced-motion:reduce) { .toolsWindow { overflow:auto; mask-image:none; } .toolsGroup[aria-hidden="true"] { display:none; } }
 
+/* Rev3 editorial system: quiet surfaces, deliberate hierarchy. */
+.site { background:#191a19; font-weight:500; }
+.site h1,.site h2,.site h3 { letter-spacing:-.045em; }
+.site p { line-height:1.65; }
+.nav { background:#191a19f5; border-bottom:1px solid #ffffff18; }
+.hero { min-height:690px; padding-top:90px; padding-bottom:90px; grid-template-columns:1.25fr 1fr; }
+.hero h1 { font-size:clamp(48px,5.65vw,82px); line-height:1.06; letter-spacing:-.055em; }
+.heroCopy .lead { max-width:480px; font-size:18px; line-height:1.65; }
+.eyebrow { color:#c1c3be; letter-spacing:.14em; font-weight:600; }
+.heroArt:before { display:none; }
+.voiceHalo { border-color:#ffffff16; background:none; }
+.speechWave i { background:#ff542b; box-shadow:none; }
+.speakCaption { font-size:22px; font-weight:500; letter-spacing:-.02em; }
+.primary,.outline { border-radius:4px; box-shadow:none; font-size:13px; font-weight:600; }
+.signalStrip { background:transparent; color:#b8bab6; font-size:11px; padding-block:22px; }
+.sectionHeading { grid-template-columns:1fr 1fr; align-items:end; gap:16px 70px; }
+.sectionHeading h2 { max-width:560px; font-size:clamp(38px,4.4vw,62px); line-height:1.1; }
+.sectionHeading > p:last-child { font-size:17px; max-width:490px; color:#bfc2bc; }
+.problemGrid { gap:0; margin-top:55px; border-top:1px solid #ffffff30; }
+.problemGrid article { border:0; border-right:1px solid #ffffff20; border-radius:0; background:none; box-shadow:none; padding:32px; animation:none; }
+.problemGrid article:first-of-type { padding-left:0; }
+.problemGrid article:last-of-type { border-right:0; padding-right:0; }
+.problemGrid article:hover { transform:none; border-color:#ffffff20; }
+.problemGrid article > span { font-size:11px; }
+.problemGrid h3 { font-size:26px; margin:38px 0 18px; }
+.problemGrid p { font-size:16px; color:#bfc2bc; }
+.connectingSignal { display:none; }
+.toolsSection { padding-top:12px; }
+.toolsHeading h2 { font-size:26px; letter-spacing:-.025em; }
+.toolsHeading p { font-size:15px; color:#bfc2bc; }
+.toolsGroup > span { border:0; border-radius:0; border-right:1px solid #ffffff25; background:none; padding:16px 30px; font-size:18px; font-weight:500; }
+.toolMark { display:none; }
+.toolsNote { font-size:12px; color:#a9aca6; }
+.callCard { background:#20221f; border:1px solid #ffffff20; border-radius:8px; box-shadow:none; }
+.callSection h2 { font-size:clamp(32px,3.5vw,48px); line-height:1.15; }
+.dialogue p { font-size:16px; }
+.serviceBand { background:#e9e9e0; border:0; color:#20221f; padding-block:75px; }
+.serviceBand .eyebrow { color:#555950; }
+.serviceBand p:not(.eyebrow),.serviceBand small { color:#4f554b; }
+.serviceBand h2 { font-size:clamp(36px,4vw,56px); line-height:1.12; }
+.studioGrid { gap:70px; }
+.miloStage { border:0; border-radius:0; background:#242622; min-height:540px; }
+.milo { background:#e45b35; border:1px solid #ff947a; box-shadow:inset 0 8px 25px #ffb39430; }
+.miloStage p { font-size:22px; font-weight:500; }
+.miloStage > span { color:#bfc2bc; font-size:10px; }
+.studioCopy .studioHeading h2 { font-size:clamp(38px,4vw,58px); }
+.studioCopy .studioHeading > p:last-child { font-size:17px; color:#bfc2bc; }
+.studioCopy h3 { font-size:28px; line-height:1.2; }
+.studioCopy > p { font-size:16px; line-height:1.7; }
+.studioCopy li p { font-size:14px; }
+.studioCopy li strong { font-size:15px; }
+.faq { border-top:1px solid #ffffff20; }
+.faq summary { font-size:17px; font-weight:500; padding-block:4px; }
+.contact h2 { font-size:clamp(38px,4.5vw,62px); line-height:1.1; }
+.map { border-radius:4px; background:#22241f; }
+.mapPlaceholder { background:none; }
+.backing img { border-radius:2px; }
+.modal { border-radius:8px; }
+@media(max-width:900px) { .hero { grid-template-columns:1fr; } .sectionHeading { grid-template-columns:1fr; } .studioGrid { gap:40px; } }
+@media(max-width:650px) { .hero { padding:55px 24px; min-height:0; } .hero h1 { font-size:48px; } .heroCopy .lead { font-size:17px; } .heroArt { max-width:360px; width:100%; margin:auto; } .problemGrid article,.problemGrid article:first-of-type,.problemGrid article:last-of-type { padding:28px 0; border-right:0; border-bottom:1px solid #ffffff20; } .problemGrid h3 { margin:20px 0 12px; } .serviceBand { padding:50px 24px; } .miloStage { min-height:360px; } .faq summary { font-size:16px; } }
