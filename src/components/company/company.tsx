@@ -9,7 +9,6 @@ import {
   Menu,
   Check,
   Phone,
-  AudioLines,
 } from "lucide-react";
 import styles from "./company.module.css";
 type FormKind = "studio" | "service" | "contact";
@@ -137,14 +136,12 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               <span /> VOICE TECHNOLOGY. HUMAN PURPOSE.
             </p>
             <h1>
-              Voice technology.
+              Why does everything
               <br />
-              <em>Human possibilities.</em>
+              <em>need a screen?</em>
             </h1>
             <p className={styles.lead}>
-              Rev3 is a voice technology company. We build products and services
-              around the way people speak, listen and work. Made for real needs.
-              Shaped with the people who use them.
+              Discover a more natural way to interact with technology. Just speak.
             </p>
             <div className={styles.actions}>
               <button
@@ -163,20 +160,20 @@ export function Company({ studioUrl }: { studioUrl: string }) {
           </div>
           <div
             className={styles.heroArt}
-            aria-label="Voice technology built around your business"
+            role="img"
+            aria-label="A screen fades into a voice waveform. Just speak."
           >
-            <div className={styles.orbit} />
-            <div className={styles.orbitTwo} />
-            <div className={styles.voiceCore}>
-              <AudioLines strokeWidth={1.2} />
+            <div className={styles.screenFrame} aria-hidden="true">
+              <div className={styles.screenTop}><i /><i /><i /></div>
+              <div className={styles.screenLines}><i /><i /><i /></div>
             </div>
-            <span className={styles.orbitTag}>YOUR VOICE</span>
-            <span className={styles.orbitTagTwo}>YOUR WAY OF WORKING</span>
-            <div className={styles.artCaption}>
-              <span>01 / LISTEN</span>
-              <span>02 / UNDERSTAND</span>
-              <span>03 / ACT</span>
+            <div className={styles.voiceHalo} aria-hidden="true" />
+            <div className={styles.speechWave} aria-hidden="true">
+              {[24, 42, 65, 36, 83, 56, 100, 70, 44, 87, 58, 32, 68, 45, 22].map((height, index) => (
+                <i key={index} style={{ height: `${height}%`, animationDelay: `${index * -0.13}s` }} />
+              ))}
             </div>
+            <span className={styles.speakCaption} aria-hidden="true">Just speak.</span>
           </div>
         </section>
         <div className={styles.signalStrip}>

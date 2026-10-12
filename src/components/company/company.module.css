@@ -1015,3 +1015,18 @@
 }
 
 .mapPlaceholder{min-height:330px;height:calc(100% - 54px);display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(circle at center,#ff441c22,transparent 70%)}.mapPlaceholder h3{font-size:30px}.mapPlaceholder p{font-size:12px}.mapPlaceholder small{margin-top:10px}
+.screenFrame { position:absolute; width:78%; height:55%; border:1px solid #ffffff60; border-radius:20px; background:linear-gradient(135deg,#ffffff15,#ffffff03); box-shadow:0 30px 80px #0005; animation:screenDissolve 4s ease-in-out both; }
+.screenTop { display:flex; gap:7px; padding:18px; border-bottom:1px solid #ffffff20; }
+.screenTop i { width:5px; height:5px; border-radius:50%; background:#ffffff70; }
+.screenLines { display:grid; gap:16px; padding:30px; }
+.screenLines i { height:7px; width:80%; background:#ffffff20; border-radius:9px; }
+.screenLines i:nth-child(2) { width:58%; }
+.screenLines i:nth-child(3) { width:68%; }
+.voiceHalo { position:absolute; width:85%; aspect-ratio:1; border:1px solid #ff795a45; border-radius:50%; background:radial-gradient(circle,#ff441c20,transparent 66%); animation:speechArrives 4s ease both; }
+.speechWave { position:absolute; width:72%; height:30%; display:flex; align-items:center; justify-content:center; gap:3%; animation:speechArrives 4s ease both; }
+.speechWave i { width:4%; border-radius:20px; background:linear-gradient(#ffb093,#ff542b 50%,#ff441c); box-shadow:0 0 22px #ff441c35; animation:speaking 1.6s ease-in-out 3 alternate; }
+.speakCaption { position:absolute; bottom:13%; color:#fff; font-size:clamp(20px,2.5vw,34px); font-weight:700; letter-spacing:-.04em; animation:speechArrives 4s ease both; }
+@keyframes screenDissolve { 0%,30% { opacity:1; transform:scale(1); filter:blur(0); } 70%,100% { opacity:0; transform:translateY(-12px) scale(.9); filter:blur(12px); visibility:hidden; } }
+@keyframes speechArrives { 0%,30% { opacity:0; transform:translateY(15px) scale(.92); } 75%,100% { opacity:1; transform:translateY(0) scale(1); } }
+@keyframes speaking { from { transform:scaleY(.45); } to { transform:scaleY(1); } }
+@media (prefers-reduced-motion:reduce) { .screenFrame { display:none; } }
