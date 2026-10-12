@@ -14,7 +14,6 @@ import styles from "./company.module.css";
 type FormKind = "studio" | "service" | "contact";
 export function Company({ studioUrl }: { studioUrl: string }) {
   const [mapLoaded,setMapLoaded]=useState(false);
-  const [motionPaused, setMotionPaused] = useState(false);
   const [form, setForm] = useState<FormKind | null>(null),
     [menu, setMenu] = useState(false),
     [busy, setBusy] = useState(false),
@@ -174,7 +173,6 @@ export function Company({ studioUrl }: { studioUrl: string }) {
                 <i key={index} style={{ height: `${height}%`, animationDelay: `${index * -0.13}s` }} />
               ))}
             </div>
-            <span className={styles.speakCaption} aria-hidden="true">Just speak.</span>
           </div>
         </section>
         <div className={styles.signalStrip}>
@@ -194,7 +192,7 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               A simpler way to ask, connect and get things done. We’re building it with the people who’ll use it.
             </p>
           </div>
-          <div className={styles.problemGrid} data-paused={motionPaused}>
+          <div className={styles.problemGrid}>
             <div className={styles.connectingSignal} aria-hidden="true"><span /></div>
             {[
               {
@@ -224,9 +222,8 @@ export function Company({ studioUrl }: { studioUrl: string }) {
         <section className={styles.toolsSection} aria-label="Connected tools">
           <div className={styles.toolsHeading}>
             <div><h2>Works with the tools you use.</h2><p>Calendars, booking systems and CRM. Connections scoped for your service.</p></div>
-            <button className={styles.outline} onClick={() => setMotionPaused(!motionPaused)} aria-pressed={motionPaused}>{motionPaused ? "Play animation" : "Pause animation"}</button>
           </div>
-          <div className={styles.toolsWindow} data-paused={motionPaused}>
+          <div className={styles.toolsWindow}>
             <div className={styles.toolsTrack}>
               {[0, 1].map(copy => <div className={styles.toolsGroup} key={copy} aria-hidden={copy === 1 ? true : undefined}>
                 {["Google Calendar", "HubSpot", "Calendly", "Salesforce", "Microsoft Bookings", "Pipedrive"].map(tool => <span key={tool}><span className={styles.toolMark} aria-hidden="true">{tool.slice(0, 1)}</span>{tool}</span>)}
