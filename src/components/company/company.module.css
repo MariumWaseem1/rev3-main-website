@@ -1064,3 +1064,6 @@
 @media(max-width:700px) { .toolsSection { padding:0 24px 55px; } .toolsHeading { align-items:flex-start; flex-direction:column; } .toolsGroup > span { font-size:15px; padding:14px 18px; } }
 @media(prefers-reduced-motion:reduce) { .toolsWindow { overflow:auto; mask-image:none; } .toolsGroup[aria-hidden="true"] { display:none; } }
 
+
+/* Give the hero question a more open rhythm. */
+.hero h1 { letter-spacing: 0.015em; }

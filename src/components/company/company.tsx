@@ -50,7 +50,14 @@ export function Company({ studioUrl }: { studioUrl: string }) {
     setBusy(true);
     setMessage("");
     try {
-      const data = Object.fromEntries(new FormData(el));
+      const fields = new FormData(el);
+      const data = Object.fromEntries(fields);
+      const qualification = ['role','callsPerWeek','teamSize','currentHandling','goal','tools','readiness','feedback'];
+      if(form==='studio') {
+        const application=Object.fromEntries(qualification.map(key=>[key,fields.get(key)]));
+        qualification.forEach(key=>delete data[key]);
+        Object.assign(data,{application});
+      }
       const r = await fetch("/api/public/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -70,6 +77,7 @@ export function Company({ studioUrl }: { studioUrl: string }) {
       setBusy(false);
     }
   }
+  useEffect(()=>{if(new URLSearchParams(window.location.search).get('apply')==='studio')setForm('studio');},[]);
   const scenes = [
     {
       title: "A call comes in.",
@@ -577,9 +585,21 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               ))}
             </select>
           </label>
+          {form==='studio'&&<>
+            <label>Your role<input name="role" required maxLength={100} placeholder="Owner, manager..."/></label>
+            {([
+              ['callsPerWeek','Roughly how many calls per week?',['Under 20','20-100','101-500','Over 500','Not sure yet']],
+              ['teamSize','Team size',['Just me','2-10','11-50','51+']],
+              ['currentHandling','Who handles calls today?',['Me or my team','Receptionist','Answering service','Mostly missed / voicemail','Other']],
+              ['goal','What would you test first?',['Bookings','Customer questions','Follow-ups','Admin tasks','Other']],
+              ['readiness','When could you try Studio?',['This week','This month','Later']],
+              ['feedback','Can you test it and share feedback?',['Yes','Not right now']]
+            ] as [string,string,string[]][]).map(([name,label,options])=><label key={name}>{label}<select name={name} required defaultValue=""><option value="" disabled>Choose one</option>{options.map(value=><option key={value}>{value}</option>)}</select></label>)}
+            <label>Tools you use (optional)<input name="tools" maxLength={500} placeholder="Booking system, CRM..."/></label>
+          </>}
           <label className={styles.wide}>
             {form === "studio"
-              ? "What would you like a voice agent to help with?"
+              ? "What would make Studio useful for your business?"
               : "What would you like help with?"}
             <textarea name="enquiry" rows={3} required maxLength={2000} />
           </label>
