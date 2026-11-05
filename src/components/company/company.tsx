@@ -11,6 +11,7 @@ import {
   Phone,
 } from "lucide-react";
 import styles from "./company.module.css";
+import { VoiceDemo } from "./voice-demo";
 type FormKind = "studio" | "service" | "contact";
 export function Company({ studioUrl }: { studioUrl: string }) {
   const [mapLoaded,setMapLoaded]=useState(false);
@@ -166,23 +167,7 @@ export function Company({ studioUrl }: { studioUrl: string }) {
               Products. Services. Ideas we build together.
             </p>
           </div>
-          <div
-            className={styles.heroArt}
-            role="img"
-            aria-label="A screen fades into a voice waveform. Just speak."
-          >
-            <div className={styles.screenFrame} aria-hidden="true">
-              <div className={styles.screenTop}><i /><i /><i /></div>
-              <div className={styles.screenLines}><i /><i /><i /></div>
-            </div>
-            <div className={styles.voiceHalo} aria-hidden="true" />
-            <div className={styles.speechWave} aria-hidden="true">
-              {[24, 42, 65, 36, 83, 56, 100, 70, 44, 87, 58, 32, 68, 45, 22].map((height, index) => (
-                <i key={index} style={{ height: `${height}%`, animationDelay: `${index * -0.13}s` }} />
-              ))}
-            </div>
-            <span className={styles.speakCaption} aria-hidden="true">Just speak.</span>
-          </div>
+          <VoiceDemo />
         </section>
         <div className={styles.signalStrip}>
           <span>Voice products</span>
